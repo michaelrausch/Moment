@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Countdowns-->
+        <!--My Events-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CountTo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="My Events" id="BYZ-38-t0r" customClass="ViewController" customModule="CountTo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,14 +92,230 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Countdowns" largeTitleDisplayMode="always" id="58l-MR-Yca"/>
+                    <navigationItem key="navigationItem" title="My Events" largeTitleDisplayMode="always" id="58l-MR-Yca">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2hd-FU-2v3">
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="addEventNavButton"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <segue destination="Vpc-Lb-lYp" kind="presentation" identifier="newEvent" id="TWk-Za-RSj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="addEventButton" destination="2hd-FU-2v3" id="rwx-KI-BdM"/>
                         <outlet property="countdownTableView" destination="Vld-bC-atL" id="IWA-6N-a5s"/>
+                        <segue destination="FnR-JD-ttG" kind="presentation" identifier="showEventDetails" id="Cdj-pl-YDZ"/>
+                        <segue destination="pOy-p6-812" kind="presentation" identifier="showFirstLaunchView" id="RsP-Ss-6jQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="852.17391304347836" y="97.767857142857139"/>
+        </scene>
+        <!--New EventVC-->
+        <scene sceneID="qdZ-iY-Hrb">
+            <objects>
+                <viewController id="Vpc-Lb-lYp" customClass="NewEventVC" customModule="CountTo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A4L-OD-aic">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wFe-MB-doN" customClass="LargeTransparentTextField" customModule="CountTo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="101" width="374" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="eventNameInput">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" smartInsertDeleteType="no" textContentType="name"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Create Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZU0-If-dFn">
+                                <rect key="frame" x="20" y="20" width="279" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="createEventLabel"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="45"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="svO-uK-fFg">
+                                <rect key="frame" x="20" y="164" width="374" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="GGH-b6-POu"/>
+                                </constraints>
+                                <date key="minimumDate" timeIntervalSinceReferenceDate="-978267600">
+                                    <!--1970-01-01 11:00:00 +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfr-Cj-UdI" customClass="LargeButton" customModule="CountTo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="341" width="374" height="65"/>
+                                <accessibility key="accessibilityConfiguration" identifier="addEventButton"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="bxA-0c-a7m"/>
+                                </constraints>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addButtonPressed:" destination="Vpc-Lb-lYp" eventType="touchUpInside" id="rEF-I3-8FY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <accessibility key="accessibilityConfiguration" identifier="createEventUIView">
+                            <bool key="isElement" value="NO"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstItem="bn5-55-ae5" firstAttribute="trailing" secondItem="wfr-Cj-UdI" secondAttribute="trailing" constant="20" id="6sZ-0i-bVc"/>
+                            <constraint firstItem="svO-uK-fFg" firstAttribute="trailing" secondItem="bn5-55-ae5" secondAttribute="trailing" constant="-20" id="9B6-p4-NRP"/>
+                            <constraint firstItem="wfr-Cj-UdI" firstAttribute="leading" secondItem="bn5-55-ae5" secondAttribute="leading" constant="20" id="Bhu-Ea-Hl8"/>
+                            <constraint firstItem="svO-uK-fFg" firstAttribute="top" secondItem="wFe-MB-doN" secondAttribute="bottom" constant="33" id="DLt-S8-oC1"/>
+                            <constraint firstItem="wFe-MB-doN" firstAttribute="leading" secondItem="bn5-55-ae5" secondAttribute="leading" constant="20" id="a7T-hn-Z1p"/>
+                            <constraint firstItem="wFe-MB-doN" firstAttribute="top" secondItem="bn5-55-ae5" secondAttribute="top" constant="101" id="fje-r1-EJT"/>
+                            <constraint firstItem="svO-uK-fFg" firstAttribute="leading" secondItem="bn5-55-ae5" secondAttribute="leading" constant="20" id="h8N-wx-xRm"/>
+                            <constraint firstItem="bn5-55-ae5" firstAttribute="trailing" secondItem="wFe-MB-doN" secondAttribute="trailing" constant="20" id="khL-g7-Yf2"/>
+                            <constraint firstItem="wfr-Cj-UdI" firstAttribute="top" secondItem="svO-uK-fFg" secondAttribute="bottom" constant="49" id="m1Q-xf-oNC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bn5-55-ae5"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="svO-uK-fFg" id="CPm-8I-J4q"/>
+                        <outlet property="eventNameInput" destination="wFe-MB-doN" id="Nlq-3A-9Ki"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sg4-CD-dUG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1868.1159420289857" y="-186.16071428571428"/>
+        </scene>
+        <!--First LaunchVC-->
+        <scene sceneID="evd-aN-vAS">
+            <objects>
+                <viewController id="pOy-p6-812" customClass="FirstLaunchVC" customModule="CountTo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N7u-j4-jNG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhv-ti-K82" customClass="LargeButton" customModule="CountTo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="654" width="374" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Continue"/>
+                                <connections>
+                                    <action selector="continueButtonPressed:" destination="pOy-p6-812" eventType="touchUpInside" id="muR-yJ-LGT"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CountTo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2m-Yn-Hl7">
+                                <rect key="frame" x="20" y="31" width="374" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="sTd-eP-YE7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ghs-hu-gKv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e0u-BP-Gf8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="850.72463768115949" y="875.89285714285711"/>
+        </scene>
+        <!--Event DetailsVC-->
+        <scene sceneID="Cdp-SS-ahm">
+            <objects>
+                <viewController id="FnR-JD-ttG" customClass="EventDetailsVC" customModule="CountTo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Rc-6H-hyv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5v-XA-VmR">
+                                <rect key="frame" x="20" y="20" width="170" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="jse-uB-Ej4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="35"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rZG-Z2-Cea">
+                                <rect key="frame" x="20" y="142" width="374" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="4rO-yC-CLn"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="datePickerUpdated:" destination="FnR-JD-ttG" eventType="valueChanged" id="A7O-cP-n9l"/>
+                                </connections>
+                            </datePicker>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MTQ-Ux-o5B" customClass="LargeTransparentTextField" customModule="CountTo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="70" width="374" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="eventNameEditField"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ype-Ly-hKd"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="ts6-lB-2eh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" smartDashesType="no" smartInsertDeleteType="no" textContentType="name"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omU-yq-cco" customClass="LargeButton" customModule="CountTo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="305" width="374" height="61"/>
+                                <accessibility key="accessibilityConfiguration" identifier="saveEventButton"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="TTW-mp-pfX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="FnR-JD-ttG" eventType="touchUpInside" id="d5s-dN-e3Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajQ-2t-6oh" customClass="DeleteButton" customModule="CountTo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="374" width="374" height="61"/>
+                                <accessibility key="accessibilityConfiguration" identifier="removeEventButton">
+                                    <bool key="isElement" value="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="Y94-ce-a0u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="FnR-JD-ttG" eventType="touchUpInside" id="DPg-Fs-5iG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="MTQ-Ux-o5B" firstAttribute="top" secondItem="S5v-XA-VmR" secondAttribute="bottom" constant="8" id="1iw-wp-2m2"/>
+                            <constraint firstItem="kjj-F8-UXr" firstAttribute="trailing" secondItem="ajQ-2t-6oh" secondAttribute="trailing" constant="20" id="8ac-Kf-A5K"/>
+                            <constraint firstItem="MTQ-Ux-o5B" firstAttribute="leading" secondItem="kjj-F8-UXr" secondAttribute="leading" constant="20" id="Ad3-cL-Hml"/>
+                            <constraint firstItem="ajQ-2t-6oh" firstAttribute="leading" secondItem="kjj-F8-UXr" secondAttribute="leading" constant="20" id="KZE-QR-oRz"/>
+                            <constraint firstItem="MTQ-Ux-o5B" firstAttribute="leading" secondItem="kjj-F8-UXr" secondAttribute="leading" constant="20" id="Kjz-zS-PAA"/>
+                            <constraint firstItem="omU-yq-cco" firstAttribute="leading" secondItem="kjj-F8-UXr" secondAttribute="leading" constant="20" id="RZ3-J6-wjH"/>
+                            <constraint firstItem="rZG-Z2-Cea" firstAttribute="leading" secondItem="kjj-F8-UXr" secondAttribute="leading" constant="20" id="bdn-FP-N5F"/>
+                            <constraint firstItem="S5v-XA-VmR" firstAttribute="leading" secondItem="kjj-F8-UXr" secondAttribute="leading" constant="20" id="cZc-wt-eeY"/>
+                            <constraint firstItem="omU-yq-cco" firstAttribute="top" secondItem="rZG-Z2-Cea" secondAttribute="bottom" constant="41" id="eu5-Hh-INu"/>
+                            <constraint firstItem="kjj-F8-UXr" firstAttribute="trailing" secondItem="rZG-Z2-Cea" secondAttribute="trailing" constant="20" id="fBb-bU-lo0"/>
+                            <constraint firstItem="ajQ-2t-6oh" firstAttribute="top" secondItem="omU-yq-cco" secondAttribute="bottom" constant="8" id="huS-wa-HZi"/>
+                            <constraint firstItem="S5v-XA-VmR" firstAttribute="top" secondItem="kjj-F8-UXr" secondAttribute="top" constant="20" id="hui-DB-2LK"/>
+                            <constraint firstItem="MTQ-Ux-o5B" firstAttribute="top" secondItem="S5v-XA-VmR" secondAttribute="bottom" constant="8" id="iLd-WT-aGX"/>
+                            <constraint firstItem="S5v-XA-VmR" firstAttribute="leading" secondItem="kjj-F8-UXr" secondAttribute="leading" constant="20" id="lbD-ol-43A"/>
+                            <constraint firstItem="kjj-F8-UXr" firstAttribute="trailing" secondItem="omU-yq-cco" secondAttribute="trailing" constant="20" id="mhg-86-AeO"/>
+                            <constraint firstItem="S5v-XA-VmR" firstAttribute="top" secondItem="kjj-F8-UXr" secondAttribute="top" constant="20" id="oSK-on-pyX"/>
+                            <constraint firstItem="kjj-F8-UXr" firstAttribute="trailing" secondItem="MTQ-Ux-o5B" secondAttribute="trailing" constant="20" id="ura-G2-HhE"/>
+                            <constraint firstItem="rZG-Z2-Cea" firstAttribute="top" secondItem="MTQ-Ux-o5B" secondAttribute="bottom" constant="42" id="vvw-hz-1m1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kjj-F8-UXr"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="rZG-Z2-Cea" id="wDo-Ov-k4t"/>
+                        <outlet property="eventNameTextBox" destination="MTQ-Ux-o5B" id="Qzo-IN-Jjs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Vl-oh-Lqp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1873.913043478261" y="480.80357142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JO9-sz-axb">
