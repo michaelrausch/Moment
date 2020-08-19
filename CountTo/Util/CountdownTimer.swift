@@ -71,7 +71,7 @@ class CountdownTimer {
      - Returns: A countdown to the event date
      */
     func getTimeString() -> String{
-        var timeString = ""
+        var timeString = "In "
         
         guard let difference = getTimeDifference() else {
             return ""
@@ -87,13 +87,16 @@ class CountdownTimer {
         }
         
         if days > 0 {
-            timeString += "\(days) Days "
+            timeString = "\(days) days and \(hours) hours"
         }
-        
-        timeString +=  "\(hours) Hours \(minutes) Minutes "
-        
-        if days == 0 {
-            timeString += "\(seconds) Seconds"
+        else if days == 0 && hours > 0{
+            timeString = "\(hours) hours and \(minutes) minutes"
+        }
+        else if days == 0 && hours == 0 && minutes > 0{
+            timeString = "\(minutes) minutes and \(seconds) seconds"
+        }
+        else if days == 0 && hours == 0 && minutes == 0 && seconds > 0 {
+            timeString += "\(seconds) seconds"
         }
         
         return timeString
@@ -103,6 +106,8 @@ class CountdownTimer {
      Starts the timer which calls the delegates update(timeString:) method every second
      */
     func startUpdating() {
+        updateTimer()
+        
         if timer == nil {
             timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         }
@@ -113,4 +118,8 @@ class CountdownTimer {
             delegate?.update(timeString: getTimeString())
         }
     }
+}
+
+protocol CountdownTimerDelegate {
+    func update(timeString: String)
 }

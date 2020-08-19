@@ -10,61 +10,98 @@ import UIKit
 
 class EventDetailsVC: UIViewController {
     @IBOutlet weak var eventNameTextBox: LargeTransparentTextField!
-    
-    var delegate: ModalHandlerDelegate?
+    @IBOutlet weak var characterCountLabel: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var imagePickerCollectionView: BackgroundImagePickerCV!
+
+    var modalHandlerDelegate: ModalHandlerDelegate?
     var event = Event()
     let repo = EventRepositoryDatabase()
-    
-    @IBOutlet weak var datePicker: UIDatePicker!
+    let notificationManager = NotificationManager()
+
+    var selectedImage: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-
-        view.addGestureRecognizer(tap)
-
+        setup()
         update()
     }
+    
+    func setup() {
+        eventNameTextBox.addTarget(self, action: #selector(EventDetailsVC.eventNameTextChanged(_:)), for: UIControl.Event.editingChanged)
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
+        imagePickerCollectionView.imagePickerDelegate = self
+    }
 
-    func setup(event: Event) {
-        self.event = event
+    func setEvent(event: Event) {
+        self.event = event // Set the event to edit
     }
     
     func update() {
         eventNameTextBox.text = event.eventName
         datePicker.date = event.eventTime
+        selectedImage = event.imageName
+        imagePickerCollectionView.setInitialImage(image: selectedImage)
+        updateCharacterCountLabel()
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        let updatedEvent = Event()
-        updatedEvent.eventName = eventNameTextBox.text ?? "Event"
-        updatedEvent.eventTime = datePicker.date
-        updatedEvent.id = event.id
-
-        repo.update(event: updatedEvent)
+        updateEvent()
         prepareForDismiss()
         dismiss(animated: true, completion: nil)
-        
     }
     
     @IBAction func deleteButtonPressed(_ sender: Any) {
+        notificationManager.cancelNotification(id: event.id)
         repo.delete(event: event)
         prepareForDismiss()
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func datePickerUpdated(_ sender: Any) {
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func updateEvent() {
+        let updatedEvent = Event()
+        updatedEvent.eventName = eventNameTextBox.text ?? "Event"
+        updatedEvent.eventTime = datePicker.date
+        updatedEvent.id = event.id
+        updatedEvent.imageName = selectedImage
+
+        repo.update(event: updatedEvent)
         
+        // Update notification by scheduling another one with the same ID
+        notificationManager.scheduleNotification(id: updatedEvent.id, title: updatedEvent.eventName, body: "It's time for \(updatedEvent.eventName)!", date: datePicker.date)
+    }
+    
+    func updateCharacterCountLabel() {
+        if let charCount = eventNameTextBox.text?.count {
+            characterCountLabel.text = "\(charCount)/\(Const.FORM_FIELD_MAX_CHAR_COUNT)"
+        }
+    }
+
+    @objc func eventNameTextChanged(_ textField: UITextField) {
+       updateCharacterCountLabel()
     }
     
     func prepareForDismiss() {
-        if delegate != nil {
-            delegate?.modalDismissed()
+        if let delegate = modalHandlerDelegate {
+            delegate.modalDismissed()
         }
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
+}
+
+extension EventDetailsVC: BackgroundImagePickerDelegate {
+    func imageSelected(with name: String) {
+        selectedImage = name
+    }
 }

@@ -8,26 +8,46 @@
 
 import UIKit
 
-class NewEventVC: UIViewController {
-    let repo = EventRepositoryDatabase()
-    var delegate: ModalHandlerDelegate? = nil
-    
+class NewEventVC: UIViewController, BackgroundImagePickerDelegate {
+    @IBOutlet weak var characterCountLabel: UILabel!
     @IBOutlet weak var eventNameInput: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
+    @IBOutlet weak var backgroundImagePicker: BackgroundImagePickerCV!
+
+    let repo = EventRepositoryDatabase()
+    let notificationManager = NotificationManager()
+    var delegate: ModalHandlerDelegate? = nil
+    var selectedImage: String = ""
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventNameInput.becomeFirstResponder()
-        // Do any additional setup after loading the view.
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-
-        view.addGestureRecognizer(tap)
+        setup()
+        notificationManager.requestAuthorization()
     }
+    
+    func setup() {
+        eventNameInput.becomeFirstResponder()
 
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
+        backgroundImagePicker.imagePickerDelegate = self
+        
+        eventNameInput.addTarget(self, action: #selector(NewEventVC.eventNameTextChanged(_:)), for: UIControl.Event.editingChanged)
+        
+        updateCharacterCountLabel()
+    }
+    
+    @IBAction func closeButtonPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func addButtonPressed(_ sender: Any) {
         let event = Event()
         event.eventName = eventNameInput.text ?? ""
         event.eventTime = datePicker.date
+        event.imageName = selectedImage
         
         repo.create(event: event)
         
@@ -35,11 +55,27 @@ class NewEventVC: UIViewController {
             delegate?.modalDismissed()
         }
         
+        notificationManager.scheduleNotification(id: event.id, title: event.eventName, body: "It's time for \(event.eventName)!", date: datePicker.date)
+        
         dismiss(animated: true, completion: nil)
     }
     
     @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+    }
+ 
+    @objc func eventNameTextChanged(_ textField: UITextField) {
+        updateCharacterCountLabel()
+    }
+
+    func imageSelected(with name: String) {
+        print(name)
+        selectedImage = name
+    }
+    
+    func updateCharacterCountLabel() {
+        if let charCount = eventNameInput.text?.count {
+            characterCountLabel.text = "\(charCount)/\(Const.FORM_FIELD_MAX_CHAR_COUNT)"
+        }
     }
 }

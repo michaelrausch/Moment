@@ -20,8 +20,8 @@ class LargeButton: UIButton {
     
     func setupButton() {
         layer.cornerRadius = 10
-        layer.backgroundColor = UIColor.systemBlue.cgColor
-        setTitleColor(.white, for: .normal)
-        titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
+        layer.backgroundColor = UIColor.label.resolvedColor(with: self.traitCollection).cgColor
+        setTitleColor(.systemGray6, for: .normal)
+        titleLabel?.font = UIFont.systemFont(ofSize: 22)
     }
 }

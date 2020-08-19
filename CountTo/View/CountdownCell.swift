@@ -9,15 +9,11 @@
 import UIKit
 
 class CountdownCell: UITableViewCell, CountdownTimerDelegate {
-    private let GRADIENT_BLUE = [UIColor(red: 79/255, green: 172/255, blue: 254/255, alpha: 1).cgColor, UIColor(red: 0/255, green: 242/255, blue: 254/255, alpha: 1).cgColor]
-    
-    private let GRADIENT_RED = [UIColor(red: 250/255, green: 112/255, blue: 154/255, alpha: 1).cgColor, UIColor(red: 255/255, green: 140/255, blue: 160/255, alpha: 1).cgColor]
-    
-    private let GRADIENT_GREEN = [UIColor(red: 67/255, green: 233/255, blue: 123/255, alpha: 1).cgColor, UIColor(red: 70/255, green: 230/255, blue: 80/255, alpha: 1).cgColor]
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var timeUntilEvent: UILabel!
     @IBOutlet weak var contentContainer: UIView!
+    @IBOutlet weak var backgroundImage: UIImageView!
     
     private var countdownTimer: CountdownTimer? = nil
     private var event: Event? = nil
@@ -39,6 +35,8 @@ class CountdownCell: UITableViewCell, CountdownTimerDelegate {
 
         title.text = event.eventName
         timeUntilEvent.text = ""
+                
+        backgroundImage.image = UIImage(named: event.imageName)
         
         if let countdownTimer = self.countdownTimer {
             countdownTimer.setDate(to: event.eventTime)
@@ -56,27 +54,7 @@ class CountdownCell: UITableViewCell, CountdownTimerDelegate {
     func applyStyles() {
         contentContainer.layer.cornerRadius = 5
         contentContainer.layer.masksToBounds = true
-        
-        // Apply gradient
-        let gradient = CAGradientLayer()
 
-        gradient.frame = contentContainer.bounds
-        gradient.startPoint = CGPoint(x: 0, y: 0.5)
-        gradient.endPoint = CGPoint(x: 1, y: 0.5)
-
-        if daysLeft > 20 {
-            gradient.colors = GRADIENT_RED
-        }
-        
-        else if daysLeft > 3 {
-            gradient.colors = GRADIENT_BLUE
-        }
-        
-        else {
-            gradient.colors = GRADIENT_GREEN
-        }
-        
-        contentContainer.layer.insertSublayer(gradient, at: 0)
     }
 
     /**
