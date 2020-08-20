@@ -17,6 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             resetState()
         }
         
+        let attrs = [
+            NSAttributedString.Key.foregroundColor: UIColor.label,
+            NSAttributedString.Key.font: UIFont(name: "AvenirNext-Bold", size: 29)!
+        ]
+
+        UINavigationBar.appearance().largeTitleTextAttributes = attrs
+        
         return true
     }
 

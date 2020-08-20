@@ -18,7 +18,7 @@ class BackgroundImageCell: UICollectionViewCell {
         super.awakeFromNib()
         contentContainer.layer.cornerRadius = 5
         contentContainer.layer.masksToBounds = true
-        contentContainer.layer.borderColor = UIColor.white.cgColor
+        contentContainer.layer.borderColor = UIColor.black.cgColor
     }
     
     func setImage(to imageName: String) {

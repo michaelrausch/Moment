@@ -54,7 +54,6 @@ class CountdownCell: UITableViewCell, CountdownTimerDelegate {
     func applyStyles() {
         contentContainer.layer.cornerRadius = 5
         contentContainer.layer.masksToBounds = true
-
     }
 
     /**
