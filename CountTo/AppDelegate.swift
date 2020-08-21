@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().largeTitleTextAttributes = attrs
 
         runCleanup()
+        updateWidget()
 
         return true
     }
@@ -62,6 +63,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if sm.isCleanupEnabled() {
             events.cleanOldEvents()
         }
+    }
+    
+    func updateWidget() {
+        let events = EventRepositoryDatabase().getAllSortedByDate()
+        
+        if events.count > 0 {
+            WidgetUpdater().setNextEvent(name: events[0].eventName, date: events[0].eventTime)
+        }
+        
     }
 
 }

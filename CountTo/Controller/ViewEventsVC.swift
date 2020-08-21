@@ -55,6 +55,7 @@ class ViewEventsVC: UIViewController{
             let controller = segue.destination as! NewEventVC
             controller.delegate = self
         }
+
     }
 }
 

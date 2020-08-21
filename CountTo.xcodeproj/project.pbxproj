@@ -32,13 +32,15 @@
 		7F8A56C8232A656C006FB97A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F8A56C6232A656C006FB97A /* LaunchScreen.storyboard */; };
 		7F8A56D3232A656C006FB97A /* CountdownTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8A56D2232A656C006FB97A /* CountdownTimerTests.swift */; };
 		7F8A56DE232A656C006FB97A /* CountToUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8A56DD232A656C006FB97A /* CountToUITests.swift */; };
+		7FB7AF4224EFE599000DA57C /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB7AF4124EFE599000DA57C /* AboutVC.swift */; };
 		7FB94C7C2442C77C00C12BCF /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB94C7B2442C77C00C12BCF /* ImageStore.swift */; };
 		7FB94C7E2442CB6600C12BCF /* BackgroundImagePickerCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB94C7D2442CB6600C12BCF /* BackgroundImagePickerCV.swift */; };
 		7FBC74582441B9F100BDA3B8 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBC74572441B9F100BDA3B8 /* TabBarVC.swift */; };
 		7FCCF5C7232B7D6300CA0874 /* LargeTransparentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCCF5C6232B7D6300CA0874 /* LargeTransparentTextField.swift */; };
 		7FCCF5CA232B888500CA0874 /* CountdownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCCF5C9232B888500CA0874 /* CountdownTimer.swift */; };
 		7FCCF5CF232BB67D00CA0874 /* CreateEventUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FCCF5CE232BB67D00CA0874 /* CreateEventUITests.swift */; };
-		7FE8FD6224EF8D7400853F6E /* PremiumFeaturesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8FD6124EF8D7400853F6E /* PremiumFeaturesVC.swift */; };
+		7FE8FDC924EFBB4700853F6E /* WidgetUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8FDC824EFBB4700853F6E /* WidgetUpdater.swift */; };
+		7FE8FDFB24EFD9AF00853F6E /* WebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8FDFA24EFD9AF00853F6E /* WebViewVC.swift */; };
 		7FEB971724434DE900D6F7DF /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB971624434DE900D6F7DF /* SettingsVC.swift */; };
 		7FEB971924434FB300D6F7DF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB971824434FB300D6F7DF /* NotificationManager.swift */; };
 		7FFC47EB24445998005A1BF5 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC47EA24445998005A1BF5 /* Const.swift */; };
@@ -119,6 +121,7 @@
 		7F8A56D9232A656C006FB97A /* CountToUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountToUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F8A56DD232A656C006FB97A /* CountToUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountToUITests.swift; sourceTree = "<group>"; };
 		7F8A56DF232A656C006FB97A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FB7AF4124EFE599000DA57C /* AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		7FB94C7B2442C77C00C12BCF /* ImageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		7FB94C7D2442CB6600C12BCF /* BackgroundImagePickerCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImagePickerCV.swift; sourceTree = "<group>"; };
 		7FBC74572441B9F100BDA3B8 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
@@ -127,7 +130,10 @@
 		7FCCF5C6232B7D6300CA0874 /* LargeTransparentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeTransparentTextField.swift; sourceTree = "<group>"; };
 		7FCCF5C9232B888500CA0874 /* CountdownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownTimer.swift; sourceTree = "<group>"; };
 		7FCCF5CE232BB67D00CA0874 /* CreateEventUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventUITests.swift; sourceTree = "<group>"; };
-		7FE8FD6124EF8D7400853F6E /* PremiumFeaturesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PremiumFeaturesVC.swift; sourceTree = "<group>"; };
+		7FE8FDC324EFB31300853F6E /* MomentFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MomentFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FE8FDC724EFB95200853F6E /* Moment.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moment.entitlements; sourceTree = "<group>"; };
+		7FE8FDC824EFBB4700853F6E /* WidgetUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetUpdater.swift; sourceTree = "<group>"; };
+		7FE8FDFA24EFD9AF00853F6E /* WebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewVC.swift; sourceTree = "<group>"; };
 		7FEB971624434DE900D6F7DF /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		7FEB971824434FB300D6F7DF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		7FFC47EA24445998005A1BF5 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -229,7 +235,8 @@
 				7F5B2AC2232BD2A2005BF299 /* FirstLaunchVC.swift */,
 				7FBC74572441B9F100BDA3B8 /* TabBarVC.swift */,
 				7FEB971624434DE900D6F7DF /* SettingsVC.swift */,
-				7FE8FD6124EF8D7400853F6E /* PremiumFeaturesVC.swift */,
+				7FE8FDFA24EFD9AF00853F6E /* WebViewVC.swift */,
+				7FB7AF4124EFE599000DA57C /* AboutVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -259,6 +266,7 @@
 		7F8A56B7232A6567006FB97A /* CountTo */ = {
 			isa = PBXGroup;
 			children = (
+				7FE8FDC724EFB95200853F6E /* Moment.entitlements */,
 				7FCCF5CD232B907000CA0874 /* Error */,
 				7FCCF5C8232B887500CA0874 /* Util */,
 				7F489BB9232B480E002F256E /* Data */,
@@ -303,6 +311,7 @@
 				7F08E2D42443479B0034E2FA /* SettingManager.swift */,
 				7FEB971824434FB300D6F7DF /* NotificationManager.swift */,
 				7FFC47EA24445998005A1BF5 /* Const.swift */,
+				7FE8FDC824EFBB4700853F6E /* WidgetUpdater.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -317,6 +326,7 @@
 		C82D1C28F843F168545DFA44 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7FE8FDC324EFB31300853F6E /* MomentFramework.framework */,
 				C85D98B8C391152F4EBAF301 /* Pods_CountTo.framework */,
 				7FBE1D3124A4CC1500342FD2 /* WidgetKit.framework */,
 				7FBE1D3324A4CC1500342FD2 /* SwiftUI.framework */,
@@ -502,10 +512,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F5EA13B232A7CD500702073 /* Event.swift in Sources */,
-				7FE8FD6224EF8D7400853F6E /* PremiumFeaturesVC.swift in Sources */,
 				7F489BC1232B68CB002F256E /* LargeButton.swift in Sources */,
 				7F8702702443164F00F3D743 /* LimitedTextField.swift in Sources */,
 				7F489BBF232B6390002F256E /* EventDetailsVC.swift in Sources */,
+				7FE8FDC924EFBB4700853F6E /* WidgetUpdater.swift in Sources */,
 				7F489BC5232B72DD002F256E /* ModalHandlerDelegate.swift in Sources */,
 				7FB94C7C2442C77C00C12BCF /* ImageStore.swift in Sources */,
 				7F08E2D52443479B0034E2FA /* SettingManager.swift in Sources */,
@@ -521,11 +531,13 @@
 				7F8A56B9232A6567006FB97A /* AppDelegate.swift in Sources */,
 				7F489BBB232B481F002F256E /* EventRepository.swift in Sources */,
 				7FCCF5CA232B888500CA0874 /* CountdownTimer.swift in Sources */,
+				7FE8FDFB24EFD9AF00853F6E /* WebViewVC.swift in Sources */,
 				7F489BC7232B789F002F256E /* NewEventVC.swift in Sources */,
 				7F8A56BB232A6567006FB97A /* SceneDelegate.swift in Sources */,
 				7F5EA139232A7BF800702073 /* CountdownCell.swift in Sources */,
 				7F08E2D1244346180034E2FA /* SettingDatabase.swift in Sources */,
 				7FEB971724434DE900D6F7DF /* SettingsVC.swift in Sources */,
+				7FB7AF4224EFE599000DA57C /* AboutVC.swift in Sources */,
 				7F489BBD232B4A84002F256E /* EventRepositoryDatabase.swift in Sources */,
 				7F31437324429AB900814CA3 /* BackgroundImageCell.swift in Sources */,
 				7FFC47EB24445998005A1BF5 /* Const.swift in Sources */,
@@ -706,6 +718,7 @@
 			baseConfigurationReference = 7646013B7FACD01B8F848423 /* Pods-CountTo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CountTo/Moment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQ3QVA4PA9;
 				INFOPLIST_FILE = CountTo/Info.plist;
@@ -725,6 +738,7 @@
 			baseConfigurationReference = 248D3426EA4322450030A87C /* Pods-CountTo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CountTo/Moment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DQ3QVA4PA9;
 				INFOPLIST_FILE = CountTo/Info.plist;

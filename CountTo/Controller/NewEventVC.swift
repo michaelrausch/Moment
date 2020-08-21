@@ -17,7 +17,7 @@ class NewEventVC: UIViewController, BackgroundImagePickerDelegate {
     let repo = EventRepositoryDatabase()
     let notificationManager = NotificationManager()
     var delegate: ModalHandlerDelegate? = nil
-    var selectedImage: String = ""
+    var selectedImage: String = "bluegradient"
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +69,6 @@ class NewEventVC: UIViewController, BackgroundImagePickerDelegate {
     }
 
     func imageSelected(with name: String) {
-        print(name)
         selectedImage = name
     }
     
