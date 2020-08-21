@@ -23,7 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
 
         UINavigationBar.appearance().largeTitleTextAttributes = attrs
-        
+
+        runCleanup()
+
         return true
     }
 
@@ -50,6 +52,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if let appDomain = Bundle.main.bundleIdentifier {
             UserDefaults.standard.removePersistentDomain(forName: appDomain)
+        }
+    }
+    
+    func runCleanup() {
+        let sm = SettingManager()
+        let events = EventRepositoryDatabase()
+
+        if sm.isCleanupEnabled() {
+            events.cleanOldEvents()
         }
     }
 

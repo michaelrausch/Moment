@@ -9,28 +9,21 @@
 import Foundation
 
 class ImageStore {
-    let plistName: String = "Images"
-    var images: [String] = []
+    let FREE_IMAGES = ["redgradient", "bluegradient", "greengradient", "purplegradient"]
+    let PREMIUM_IMAGES = ["sunset", "sky", "wall", "pattern1", "pattern2", "fireworks", "fireworks2", "fireworks3", "plane"]
     
     init() {
-        do {
-            images = try loadPlist()
-        } catch {
-            print("Failed to load Image Plist")
-        }
+
     }
     
-    private func loadPlist() throws -> [String] {
-        if let path = Bundle.main.path(forResource: plistName, ofType: "plist"),
-            let xml = FileManager.default.contents(atPath: path),
-            let imageNames = try PropertyListSerialization.propertyList(from: xml, options: .mutableContainersAndLeaves, format: nil) as? [String] {
-            
-            return imageNames
-        }
-        return []
+    func getFreeImages() -> [String] {
+        return FREE_IMAGES
     }
     
-    func getImages() -> [String] {
-        return images
+    func getPremiumImages() -> [String] {
+        var allImages = FREE_IMAGES
+        allImages.append(contentsOf: PREMIUM_IMAGES)
+        
+        return allImages
     }
 }

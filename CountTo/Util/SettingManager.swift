@@ -62,9 +62,49 @@ class SettingManager {
     
 }
 
+extension SettingManager {
+    func isCleanupEnabled() -> Bool {
+        if let result = getSetting(setting: .cleanup) {
+            if result == SettingValue.enabled.rawValue {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func enableCleanup() {
+        setSetting(setting: .cleanup, value: .enabled)
+    }
+    
+    func disableCleanup() {
+        setSetting(setting: .cleanup, value: .disabled)
+    }
+}
+
+extension SettingManager {
+    func isRemindersEnabled() -> Bool {
+        if let result = getSetting(setting: .reminders) {
+            if result == SettingValue.enabled.rawValue {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func enableReminders() {
+        setSetting(setting: .reminders, value: .enabled)
+    }
+    
+    func disableReminders() {
+        setSetting(setting: .reminders, value: .disabled)
+    }
+}
+
 enum SettingName: String {
     case premium = "PREMIUM"
     case initialLaunch = "INITIAL_LAUNCH"
+    case cleanup = "CLEANUP_ENABLED"
+    case reminders = "REMINDERS_ENABLED"
 }
 
 enum SettingValue: String {

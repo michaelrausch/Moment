@@ -12,6 +12,7 @@ import UserNotifications
 class NotificationManager {
     let notificationCenter = UNUserNotificationCenter.current()
     let options: UNAuthorizationOptions = [.alert, .sound]
+    let settings = SettingManager()
     
     init() {
         
@@ -31,6 +32,10 @@ class NotificationManager {
         content.body = body
         content.sound = UNNotificationSound.default
         
+        if settings.isRemindersEnabled() == false {
+            return
+        }
+        
         let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
@@ -45,5 +50,22 @@ class NotificationManager {
     func cancelNotification(id: String) {
         notificationCenter.removeDeliveredNotifications(withIdentifiers: [id])
         notificationCenter.removePendingNotificationRequests(withIdentifiers: [id])
+    }
+    
+    func removeAllReminders() {
+        notificationCenter.getPendingNotificationRequests { (notifications) in
+            for notification in notifications {
+                let id = notification.identifier
+                self.cancelNotification(id: id)
+            }
+        }
+    }
+    
+    func enableAllReminders() {
+        let events = EventRepositoryDatabase().getAll()
+        
+        for event in events {
+            scheduleNotification(id: event.id, title: event.eventName, body: "It's time for \(event.eventName)!", date: event.eventTime)
+        }
     }
 }

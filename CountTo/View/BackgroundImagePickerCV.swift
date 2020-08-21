@@ -30,7 +30,14 @@ class BackgroundImagePickerCV: UICollectionView, UICollectionViewDataSource, UIC
     }
     
     func loadImageList() {
-        images = ImageStore().getImages()
+        let sm = SettingManager()
+        let store = ImageStore()
+        
+        images = store.getFreeImages()
+
+        if sm.isPremiumEnabled() {
+            images = store.getPremiumImages()
+        }
     }
     
     func setInitialImage(image: String) {
@@ -59,7 +66,6 @@ extension BackgroundImagePickerCV {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BackgroundImageCell", for: indexPath) as! BackgroundImageCell
         
         cell.setImage(to: images[indexPath.row])
-        cell.setDeselected()
         
         return cell
     }

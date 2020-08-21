@@ -8,24 +8,36 @@
 
 import UIKit
 
-class SettingsVC: UIViewController {
-
+class SettingsVC: UIViewController {    
+    var settingManager = SettingManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func premiumPurchaseClicked(_ sender: Any) {
-        let settingManager = SettingManager()
+    func showPurchaseAlert(premium: Bool) {
+        var alertText = "You have purchased premium: SK Reciept = SANDBOX4948210"
         
+        if !premium {
+            alertText = "You have cancelled premium"
+        }
+        
+        let alert = UIAlertController(title: "Moment Premium", message: alertText, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func premiumPurchaseClicked(_ sender: Any) {
         if settingManager.isPremiumEnabled() {
             settingManager.disablePremium()
-            print("Disabled Premium")
+            showPurchaseAlert(premium: false)
         }
         else {
             settingManager.enablePremium()
-            print("Enabled Premium")
+            showPurchaseAlert(premium: true)
         }
     }
 }
+

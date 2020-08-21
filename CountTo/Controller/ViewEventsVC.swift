@@ -28,6 +28,12 @@ class ViewEventsVC: UIViewController{
     func reloadEvents() {
         events = eventRepo.getAllSortedByDate()
     }
+    
+    func showPremiumAlert() {
+        let alert = UIAlertController(title: "Premium", message: "You need to purchase premium to create more than 3 events", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showEventDetails" {
@@ -39,6 +45,13 @@ class ViewEventsVC: UIViewController{
         }
         
         if segue.identifier == "newEvent" {
+            let sm = SettingManager()
+            
+            if events.count >= 3 && !sm.isPremiumEnabled() {
+                showPremiumAlert()
+                return
+            }
+            
             let controller = segue.destination as! NewEventVC
             controller.delegate = self
         }

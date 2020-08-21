@@ -18,7 +18,13 @@ class BackgroundImageCell: UICollectionViewCell {
         super.awakeFromNib()
         contentContainer.layer.cornerRadius = 5
         contentContainer.layer.masksToBounds = true
-        contentContainer.layer.borderColor = UIColor.black.cgColor
+        
+        if self.traitCollection.userInterfaceStyle == .dark {
+            contentContainer.layer.borderColor = UIColor.white.cgColor
+        }
+        else {
+            contentContainer.layer.borderColor = UIColor.black.cgColor
+        }
     }
     
     func setImage(to imageName: String) {

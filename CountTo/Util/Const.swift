@@ -9,5 +9,5 @@
 import Foundation
 
 class Const {
-    static let FORM_FIELD_MAX_CHAR_COUNT = 17
+    static let FORM_FIELD_MAX_CHAR_COUNT = 25
 }

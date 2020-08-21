@@ -91,4 +91,19 @@ class EventRepositoryDatabase: EventRepository {
             realm.deleteAll()
         }
     }
+    
+    func cleanOldEvents() {
+        let events = getAll()
+        let calendar = Calendar.current
+        let now = calendar.dateComponents([.hour, .minute, .month, .year, .day, .second], from: Date())
+
+        for event in events {
+            let countdownDateComponents = calendar.dateComponents([.hour, .minute, .month, .year, .day, .second], from: event.eventTime)
+            let timeDelta = calendar.dateComponents([.day, .hour, .minute, .second], from: now, to: countdownDateComponents)
+            
+            if let days = timeDelta.day, days <= -1 {
+                delete(event: event)
+            }
+        }
+    }
 }
