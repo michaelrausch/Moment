@@ -720,13 +720,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CountTo/Moment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DQ3QVA4PA9;
+				DEVELOPMENT_TEAM = 7785XJ6T43;
 				INFOPLIST_FILE = CountTo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nz.michaelrausch.CountTo;
+				PRODUCT_BUNDLE_IDENTIFIER = nz.rausch.moment;
 				PRODUCT_NAME = Moment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -740,13 +740,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CountTo/Moment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = DQ3QVA4PA9;
+				DEVELOPMENT_TEAM = 7785XJ6T43;
 				INFOPLIST_FILE = CountTo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nz.michaelrausch.CountTo;
+				PRODUCT_BUNDLE_IDENTIFIER = nz.rausch.moment;
 				PRODUCT_NAME = Moment;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
