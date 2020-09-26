@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3R9-cM-8p1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3R9-cM-8p1">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17124"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -454,6 +454,7 @@
                     <navigationItem key="navigationItem" title="Settings" largeTitleDisplayMode="always" id="QCY-4v-fTV"/>
                     <connections>
                         <outlet property="cleanupToggle" destination="mxf-YL-UnG" id="lCU-xN-I3W"/>
+                        <outlet property="purchasePremiumButton" destination="bal-1f-y3j" id="xwh-F5-Ydp"/>
                         <outlet property="remindersToggle" destination="xbG-vu-jWi" id="DU3-QY-B0P"/>
                         <segue destination="H4V-py-Fvs" kind="presentation" identifier="showPrivacyWebView" id="Fe6-Wh-tdV"/>
                     </connections>
@@ -1034,7 +1035,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0nu-gN-plS"/>
+        <segue reference="Fe6-Wh-tdV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo" width="2000" height="2000"/>

@@ -43,6 +43,7 @@
 		7FE8FDFB24EFD9AF00853F6E /* WebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE8FDFA24EFD9AF00853F6E /* WebViewVC.swift */; };
 		7FEB971724434DE900D6F7DF /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB971624434DE900D6F7DF /* SettingsVC.swift */; };
 		7FEB971924434FB300D6F7DF /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEB971824434FB300D6F7DF /* NotificationManager.swift */; };
+		7FF0518B251E9B780054C0D5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF0518A251E9B780054C0D5 /* StoreKit.framework */; };
 		7FFC47EB24445998005A1BF5 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC47EA24445998005A1BF5 /* Const.swift */; };
 		F8906ED4F35D91CE15092053 /* Pods_CountTo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C85D98B8C391152F4EBAF301 /* Pods_CountTo.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		7F489BC0232B68CB002F256E /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		7F489BC4232B72DD002F256E /* ModalHandlerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHandlerDelegate.swift; sourceTree = "<group>"; };
 		7F489BC6232B789F002F256E /* NewEventVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventVC.swift; sourceTree = "<group>"; };
+		7F49794E251EBA060055694D /* SKConfig.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SKConfig.storekit; sourceTree = "<group>"; };
 		7F5B2ABE232BCB6B005BF299 /* EditEventUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventUITests.swift; sourceTree = "<group>"; };
 		7F5B2AC2232BD2A2005BF299 /* FirstLaunchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchVC.swift; sourceTree = "<group>"; };
 		7F5EA138232A7BF800702073 /* CountdownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownCell.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		7FE8FDFA24EFD9AF00853F6E /* WebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewVC.swift; sourceTree = "<group>"; };
 		7FEB971624434DE900D6F7DF /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		7FEB971824434FB300D6F7DF /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		7FF0518A251E9B780054C0D5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		7FFC47EA24445998005A1BF5 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		C85D98B8C391152F4EBAF301 /* Pods_CountTo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CountTo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8906ED4F35D91CE15092053 /* Pods_CountTo.framework in Frameworks */,
+				7FF0518B251E9B780054C0D5 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +283,7 @@
 				7F8A56C6232A656C006FB97A /* LaunchScreen.storyboard */,
 				7F8A56C9232A656C006FB97A /* Info.plist */,
 				7F8A56C1232A6567006FB97A /* CountTo.xcdatamodeld */,
+				7F49794E251EBA060055694D /* SKConfig.storekit */,
 			);
 			path = CountTo;
 			sourceTree = "<group>";
@@ -326,6 +331,7 @@
 		C82D1C28F843F168545DFA44 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7FF0518A251E9B780054C0D5 /* StoreKit.framework */,
 				7FE8FDC324EFB31300853F6E /* MomentFramework.framework */,
 				C85D98B8C391152F4EBAF301 /* Pods_CountTo.framework */,
 				7FBE1D3124A4CC1500342FD2 /* WidgetKit.framework */,
@@ -720,6 +726,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CountTo/Moment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7785XJ6T43;
 				INFOPLIST_FILE = CountTo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -740,6 +747,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = CountTo/Moment.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 7785XJ6T43;
 				INFOPLIST_FILE = CountTo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

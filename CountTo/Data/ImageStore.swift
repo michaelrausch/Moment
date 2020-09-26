@@ -10,7 +10,7 @@ import Foundation
 
 class ImageStore {
     let FREE_IMAGES = ["redgradient", "bluegradient", "greengradient", "purplegradient"]
-    let PREMIUM_IMAGES = ["sunset", "sky", "wall", "pattern1", "pattern2", "fireworks", "apricot", "blueberry", "xmas1", "xmas2", "cloud", "uluru", "lake", "oils", "canyon", "grass"]
+    let PREMIUM_IMAGES = ["apricot", "fireworks", "pattern1", "wall"]
     
     init() {
 

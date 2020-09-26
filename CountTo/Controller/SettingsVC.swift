@@ -7,17 +7,24 @@
 //
 
 import UIKit
+import StoreKit
 
-class SettingsVC: UIViewController {    
+class SettingsVC: UIViewController, SKProductsRequestDelegate {
     @IBOutlet weak var cleanupToggle: UISwitch!
     @IBOutlet weak var remindersToggle: UISwitch!
     
+    @IBOutlet weak var purchasePremiumButton: LargeButton!
+    
+    let productID = "nz.rausch.moment.premium"
+    
     let settings = SettingManager()
     let notificationManager = NotificationManager()
+    var productRequest: SKProductsRequest!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupToggles()
+        updatePremiumPrice()
         // Do any additional setup after loading the view.
     }
     
@@ -40,6 +47,10 @@ class SettingsVC: UIViewController {
             remindersToggle.isEnabled = false
             cleanupToggle.isEnabled = false
         }
+        else {
+            remindersToggle.isEnabled = true
+            cleanupToggle.isEnabled = true
+        }
     }
     
     func showPurchaseAlert(premium: Bool) {
@@ -57,8 +68,35 @@ class SettingsVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showPrivacyWebView" {
             let controller = segue.destination as! WebViewVC
-            controller.setup(name: "Privacy Policy", url: "http://google.com")
+            controller.setup(name: "Privacy Policy", url: "https://michaelrausch.nz/privacy.txt")
         }
+    }
+    
+    func updatePremiumPrice() {
+        productRequest = SKProductsRequest(productIdentifiers: [productID])
+        productRequest.delegate = self
+        productRequest.start()
+        print("HERE")
+    }
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        if !response.products.isEmpty {
+            let iAP = response.products.first!
+            let formatter = NumberFormatter()
+            formatter.locale = iAP.priceLocale
+            formatter.numberStyle = .currency
+            
+            if let formattedAmount = formatter.string(from: iAP.price) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.purchasePremiumButton.setTitle("Buy now for \(formattedAmount)", for: .normal)
+                }
+            }
+        }
+
+    }
+    
+    func request(_ request: SKRequest, didFailWithError error: Error) {
+        print(error)
     }
     
     @IBAction func premiumPurchaseClicked(_ sender: Any) {
@@ -98,10 +136,8 @@ class SettingsVC: UIViewController {
             notificationManager.removeAllReminders()
         }
     }
+    
     @IBAction func privacyPolicyPressed(_ sender: Any) {
-        
-        
-        
         performSegue(withIdentifier: "showPrivacyWebView", sender: nil)
     }
 }

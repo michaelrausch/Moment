@@ -57,6 +57,8 @@ class SettingManager {
     }
     
     func disablePremium() {
+        disableCleanup()
+        disableReminders()
         setSetting(setting: .premium, value: .disabled)
     }
     
